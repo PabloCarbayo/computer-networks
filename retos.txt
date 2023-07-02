@@ -1,0 +1,184 @@
+Hello. My name is RICE, the Random and Insane Challenges Evaluator
+version 20220329.
+
+Students are advised to use UTF-8 encoding in their terminal to avoid coding
+issues.
+
+WARNING: ALL SERVER CONTENTS MAY BE DESTROYED WITHOUT PREVIOUS
+NOTIFICACTION. ALWAYS BACKUP YOUR FILES.
+
+You should reply to this message with your username.
+You have 5 seconds.
+
+> 
+identifier:dMgyQBfFJXNinYHeoRmO
+
+Test Chamber 1: UDP
+-------------------
+
+- Create a UDP server on your machine (on the port you want)
+- Send a message to the UDP server at 'yinkana:4000'
+  indicating:
+  - the port binded to your UDP server.
+  - a blank space
+  - the identifier in the first line on this text
+  Example: "7777 dMgyQBfFJXNinYHeoRmO" (without quotes).
+
+WARNING: Keep in mind that other players may choose the same port.
+You must choose a free port.
+
+I will send the query "upper-code?" to your server. It should reply
+the uppercase version of 'dMgyQBfFJXNinYHeoRmO'.
+
+If all is fine, I will send to your server the instructions to continue.
+You have 5 seconds to send the message.
+
+>
+upper-code?
+identifier:f0ed681e
+
+Welcome to the test chamber number 2. You're doing quite well.
+Excellent work. As part of a required test protocol, I will not monitor
+the next test chamber. You will be entirely on your own. Good luck.
+
+Test Chamber 2: Number counter
+------------------------------
+
+- You must connect to the TCP server at yinkana:3000 and read
+  numbers until you get a zero. Then you must reply with a message
+  that includes:
+  - the identifer in the first line on this text
+  - a blank space
+  - the amount of numbers you read BEFORE the zero.
+
+Example:
+  - if receive: "1 4 8 15 16 23 42 0 ..."
+  - then send:  "f0ed681e 7" (without quotes).
+
+Then you can receive the instructions to continue.
+You have 5 seconds to connect.
+
+>
+identifier:45c1d345-02390
+
+Test Chamber 3: Yummy!
+----------------------
+
+  You must connect to the TCP server at yinkana:3060 and read
+  text content. From this text, you must extract a sentence with
+  information about cakes stuff.
+  - You will receive single numbers and words, the last ones with
+    the format <word>:<number>.
+  - The first single number received, X, is the length of the
+    sentence (X words).
+  - The number formatted alongside a word is the position of that
+    word in the sentence.
+  Continue receiving until you get the words to build the sentence.
+  Then you must reply with a message that includes:
+  - the identifer in the first line on this text
+  - a space
+  - the sentence
+  - the string " --"
+
+Note: words may contain commas, dashes, dots, apostrophes, etc.
+
+Example:
+  - if receive: "to:3 baked:5 You're:1 5 babka:7 8 be:4 going:2 ..."
+  - then send:  "45c1d345-02390 You're going to be baked --"
+    (without quotes).
+
+Then you can receive the instructions to continue.
+You have 8 seconds to connect.
+
+>
+identifier:512e40ec-9a0
+
+Please, note that the increase in the difficulty of test chambers is
+merely a device to enhance your testing experience. Anyway, I regret
+to inform you that this next test is impossible. Quit now.
+
+Test Chamber 4: MD5
+-------------------
+
+- Connect to the server yinkana:9000 and send the identifier
+  string: '512e40ec-9a0' (without quotes)
+- You will receive the contents of a binary file, preceded by its size in bytes (in ASCII
+  coding) and a colon character (':').
+- Calculate the MD5 sum of that file.
+- Send result (binary format) to the server.
+
+If it's right, the server will give you instructions to continue.
+You have 20 seconds to complete the challenge.
+
+Hints:
+- Example: The MD5 digest for the file located in the-hub:/data
+  is 'd5d9f7918683cd271edc3b9e6e17bc50' (hex format)
+
+>
+identifier:17bbf53d
+
+Fantastic! You remained resolute and resourceful in an atmosphere of
+extreme pessimism. As a reward... I can let you solve another challenge.
+
+Test Chamber 5: YAP
+-------------------
+
+YAP (Yinkana Awesome Protocol) is a binary application protocol designed to
+test player packing skills. YAP is encapsulated over UDP datagrams.
+- Message format:
+  +---------+----------------------------+
+  | header  |  payload                   |
+  +---------+----------------------------+
+- Header format:
+  +-------+------+------+----------+----------+
+  | "YAP" | type | code | checksum | sequence |
+  +-------+------+------+----------+----------+
+     3       2      1        2           2      (bytes)
+
+  where:
+  - type: 0:request, 1:reply
+  - code: 0:no-error, 1:wrong-code, 2:wrong-format,
+          3:wrong-challenge, 4:wrong-checksum,
+          5:bad-sequence-number
+    - 'code' must be 0 on requests
+  - checksum: Internet checksum (RFC1071) for the whole message
+  - sequence: 16 bit integer sequence number
+  - payload:
+    - Text encoded with base64 format
+
+Instructions:
+- Send a YAP request to yinkana:6001 with 17bbf53d as payload.
+- The reply will contain the instructions for next challenge.
+- You have 5 seconds to send query.
+
+Hints:
+- Use module 'struct' to build messages
+- You can use the checksum calculation function in
+  https://bitbucket.org/DavidVilla/inet-checksum/src/master/inet_checksum.py
+
+>
+identifier:eb201026-908e-4c2d-a
+
+The experiment is nearing its conclusion. When rou are done, stop
+writing and throw your kayboard away. This testing initiative
+resulations require both hands to be free before serving any cake.
+
+Test Chamber 6: Web Server Get
+------------------------------
+
+You must create a web server in a free port. Then send a message like
+'eb201026-908e-4c2d-a <port>' to the TCP socket 'yinkana:8003'.
+You will receive error messages throgh this connection.
+- <port> is the port number where you web server listen.
+
+- Your server will receive a lot of requests, which must be performed
+  concurrently to improved performance. If required time is too long, the
+  challenge will fail.
+- The requested files will be RFCs from http://rick:81/rfc/rfc<number>.txt
+- If succeed, your server will receive the instructions of the next challenge
+  by means a GET request.
+- FORBBIDEN modules: http, http.client, http.server
+
+- You have 18 seconds to complete.
+
+>
